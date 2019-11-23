@@ -19,6 +19,12 @@ int main()
 	}
 
 	// Create a socket
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening == INVALID_SOCKET) 
+	{
+		cerr << "Can't create a socket! Quitting" << endl;
+		return 1;
+	}
 
 	// Bind the socket to an ip address and port
 
