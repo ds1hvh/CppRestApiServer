@@ -34,8 +34,10 @@ int main()
 	hint.sin_addr.S_un.S_addr = INADDR_ANY;	// Could also use inet_pton ....
 
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
+
 	// Tell Winsock the socket is for listening
-	
+	listen(listening, SOMAXCONN);
+
 	// Wait for a connection
 
 	// Close listening socket
