@@ -85,6 +85,7 @@ int main()
 		}
 
 		// Echo message back to client
+		cout << clientSocket << ": " << buf << endl;
 		send(clientSocket, buf, bytesReceived + 1, 0);		
 	}
 
