@@ -3,6 +3,15 @@
 class TcpListener {
 
 public :
+	
+	TcpListener(const char* ipAddress, int port) :
+		m_ipAddress(ipAddress), m_port(port) { }
+
+	// Initialize the listener
+	int init();
+
+	// Run the listener
+	int run();
 
 protected:
 
