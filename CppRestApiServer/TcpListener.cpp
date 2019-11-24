@@ -106,16 +106,7 @@ int TcpListener :: run()
 				}
 				else
 				{
-					for (int i = 0; i < m_master.fd_count; i++) 
-					{
-						SOCKET outSock = m_master.fd_array[i];
-						if (outSock != m_socket && outSock != sock) 
-						{
-							// TODO:
-						}
-
-					}
-
+					onMessageReceived(sock, buf, bytesIn);
 				}
 
 			}
@@ -139,7 +130,9 @@ int TcpListener :: run()
 		closesocket(sock);
 
 	}
-	
+
+	// Cleanup winsock
+	WSACleanup();
 	return 0;
 }
 
@@ -162,16 +155,20 @@ void TcpListener::broadcastToClients(int sendingClient, const char* msg, int len
 	}
 }
 
+
+// Handler for client connections
 void TcpListener::onClientConnected(int clientSocket)
 {
 
 }
 
+// Handler for client disconnections
 void TcpListener::onClientDisconnected(int clientSocket)
 {
 
 }
 
+// Handler for when a message is received from the client
 void TcpListener::onMessageReceived(int clientSocket, const char* msg, int length)
 {
 
