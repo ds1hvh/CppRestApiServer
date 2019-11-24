@@ -27,6 +27,9 @@
     <ClInclude Include="TcpListener.h" />
     <ClInclude Include="WebServer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\index.html" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1AC94EAE-4B6F-4CA7-A48F-B6C8D4318076}</ProjectGuid>

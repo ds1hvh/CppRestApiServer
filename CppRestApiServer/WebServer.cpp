@@ -1,4 +1,5 @@
 #include<string>
+#include<fstream>
 #include<iostream>
 #include<sstream>
 #include "WebServer.h"
@@ -21,17 +22,31 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 
 	// Parse out the document requested
 	// Open the document in the local file system
+	std::ifstream f(".\\wwwroot\\index.html");
+	std::string content = "";
+	int code = 404;
+	int size = 0;
+
+	if (f.good())
+	{
+		std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+		content = str;
+		code = 200;
+	}
+
+	f.close();
+
 	// Write the document back to the client
 	std::ostringstream oss;
-	oss << "HTTP/1.1 200 OK\r\n";
+	oss << "HTTP/1.1 " << code << " OK\r\n";
 	oss << "Cache-Control: no-cache, private\r\n";
-	oss << "Content-Type: text/plain\r\n";
-	oss << "Content-Length: 5\r\n";
+	oss << "Content-Type: text/html\r\n";
+	oss << "Content-Length: " << content.size() << "\r\n";
 	oss << "\r\n";
-	oss << "hello";
+	oss << content;
 	
 	std::string output = oss.str();
-	int size = output.size() + 1;
+	size = output.size() + 1;
 
 	sendToClient(clientSocket, output.c_str(), size);
 }
