@@ -2,6 +2,8 @@
 #include<fstream>
 #include<iostream>
 #include<sstream>
+#include<vector>
+#include<iterator>
 #include "WebServer.h"
 
 // Handler for when a message is received from the client
@@ -21,20 +23,30 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 	// Get /index.html HTTP/1.1
 
 	// Parse out the document requested
-	// Open the document in the local file system
-	std::ifstream f(".\\wwwroot\\index.html");
+	std::istringstream iss(msg);
+	std::vector<std::string> parsed((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
+
+
 	std::string content = "";
-	int code = 404;
 	int size = 0;
+	int code = 404;
 
-	if (f.good())
+	if (parsed.size() >= 3 && parsed[0] == "GET") // HTTP Methods len >= 3
 	{
-		std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
-		content = str;
-		code = 200;
-	}
+		// Open the document in the local file system
+		std::ifstream f(".\\wwwroot\\" + parsed[1]);
 
-	f.close();
+		if (f.good())
+		{
+			std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+			content = str;
+			code = 200;
+		}
+
+		f.close();
+	}
+	
+
 
 	// Write the document back to the client
 	std::ostringstream oss;
