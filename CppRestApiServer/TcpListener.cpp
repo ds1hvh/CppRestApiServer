@@ -140,6 +140,7 @@ int TcpListener :: run()
 
 	}
 	
+	return 0;
 }
 
 // Send a message to a client
