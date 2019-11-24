@@ -21,14 +21,19 @@ public :
 protected:
 
 	// Handler for client connections
-	void onClientConnected();
+	virtual void onClientConnected(int clientSocket);
 
 	// Handler for client disconnections
-	void onClientDisconnected();
+	virtual void onClientDisconnected(int clientSocket);
+
+	// Handler for when a message is received from the client
+	virtual void onMessageReceived(int clientSocket, const char* msg, int length);
 
 	// Send a message to a client
 	void sendToClient(int clientSocket, const char* msg, int length);
 
+	// Broadcast a message from a client 
+	void broadcastToClients(int sendingClient, const char*msg, int length);
 private:
 
 	const char* m_ipAddress;	// IP Address server will run on

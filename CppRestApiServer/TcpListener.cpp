@@ -84,7 +84,7 @@ int TcpListener :: run()
 				// ADD the new connection to the list of connected clients
 				FD_SET(client, &m_master);
 
-				// TODO: client connected?
+				onClientConnected(sock);
 
 			}
 			else // It's an inbound message
@@ -97,9 +97,7 @@ int TcpListener :: run()
 				if (bytesIn <= 0) 
 				{
 					// Drop the client
-
-					// TODO: Client disconnected
-
+					onClientDisconnected(sock);
 					closesocket(sock);
 					FD_CLR(sock, &m_master);
 				}
@@ -139,4 +137,38 @@ int TcpListener :: run()
 
 	}
 	
+}
+
+// Send a message to a client
+void TcpListener::sendToClient(int clientSocket, const char* msg, int length)
+{
+	send(clientSocket, msg, length, 0);
+}
+
+// Broadcast a message from a client
+void TcpListener::broadcastToClients(int sendingClient, const char* msg, int length)
+{
+	for (int i = 0; i < m_master.fd_count; i++) 
+	{
+		SOCKET outSock = m_master.fd_array[i];
+		if (outSock != m_socket && outSock != sendingClient)
+		{
+			sendToClient(outSock, msg, length);
+		}
+	}
+}
+
+void TcpListener::onClientConnected(int clientSocket)
+{
+
+}
+
+void TcpListener::onClientDisconnected(int clientSocket)
+{
+
+}
+
+void TcpListener::onMessageReceived(int clientSocket, const char* msg, int length)
+{
+
 }
