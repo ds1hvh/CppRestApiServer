@@ -23,7 +23,7 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 	// Open the document in the local file system
 	// Write the document back to the client
 	std::ostringstream oss;
-	oss << "HTTP/1.1 200 OK\r\n\r\n";
+	oss << "HTTP/1.1 200 OK\r\n";
 	oss << "Cache-Control: no-cache, private\r\n";
 	oss << "Content-Type: text/plain\r\n";
 	oss << "Content-Length: 5\r\n";
