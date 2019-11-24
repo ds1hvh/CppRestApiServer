@@ -28,25 +28,32 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 
 
 	std::string content = "";
-	int size = 0;
+	std::string htmlFile = "/index.html";
 	int code = 404;
+	int size = 0;
 
 	if (parsed.size() >= 3 && parsed[0] == "GET") // HTTP Methods len >= 3
 	{
-		// Open the document in the local file system
-		std::ifstream f(".\\wwwroot\\" + parsed[1]);
+		htmlFile = parsed[1];
 
-		if (f.good())
+		// default page
+		if (htmlFile == "/")  
 		{
-			std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
-			content = str;
-			code = 200;
+			htmlFile = "/index.html";
 		}
-
-		f.close();
 	}
 	
+	// Open the document in the local file system
+	std::ifstream f(".\\wwwroot" + htmlFile);
 
+	if (f.good())
+	{
+		std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+		content = str;
+		code = 200;
+	}
+
+	f.close();
 
 	// Write the document back to the client
 	std::ostringstream oss;
