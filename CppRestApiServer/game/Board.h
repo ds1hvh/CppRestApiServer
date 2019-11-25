@@ -14,7 +14,7 @@ public :
 	void shuffle();
 
 	// Getter
-	bool* getBoard();
+	bool* getClearList();
 	int getSize();
 
 	// Guess card

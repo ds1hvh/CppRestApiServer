@@ -30,10 +30,10 @@ void Board::shuffle()
 }
 
 // Getter
-bool* Board::getBoard()
+bool* Board::getClearList()
 {
-	bool* answer = new bool[5];
-	for (int i = 0; i < 5; i++)
+	bool* answer = new bool[size];
+	for (bool is_clear : board.)
 	{
 		answer[i] = false;
 	}

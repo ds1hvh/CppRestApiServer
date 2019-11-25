@@ -10,12 +10,12 @@
 // Handler for when a message is received from the client
 void WebServer::onClientConnected(int clientSocket)
 {
-
+	std::cout << "[CON]client" << clientSocket << " connected!" << std::endl;
 }
 
 void WebServer::onClientDisconnected(int clientSocket)
 {
-
+		std::cout << "[DIS]client" << clientSocket << " disconnected!" << std::endl;
 }
 
 void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
@@ -52,7 +52,7 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 		}
 		else if (uri == "/game")
 		{
-			rapidjson::Document doc;
+			
 			
 		}
 	}
