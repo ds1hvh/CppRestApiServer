@@ -12,7 +12,7 @@ public :
 	bool operator == (Card& card2);
 
 	// Getter, setter
-	void setCleared(bool cleared);
+	void clear();
 	void setValue(int value);
 	bool getCleared();
 	int getValue();

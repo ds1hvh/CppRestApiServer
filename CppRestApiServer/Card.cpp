@@ -10,9 +10,9 @@ bool Card::operator == (Card& card2)
 	return false;
 }
 
-void Card::setCleared(bool cleared) 
+void Card::clear() 
 {
-	this->cleared = cleared;
+	this->cleared = true;
 }
 void Card::setValue(int value)
 {
