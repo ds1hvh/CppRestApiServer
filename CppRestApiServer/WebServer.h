@@ -18,4 +18,5 @@ protected :
 
 	// Handler for when a message is received from the client
 	void onMessageReceived(int clientSocket, const char* msg, int length);
+
 };

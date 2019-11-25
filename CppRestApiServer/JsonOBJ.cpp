@@ -39,7 +39,11 @@ void JsonOBJ::add(std::string key, Board board)
 	bool* clearList = board.getClearList();
 	for (int i = 0; i < size; i++) 
 	{
-		v.PushBack(clearList[i], allocator);
+		rapidjson::Value v_pair;
+		v_pair.SetObject();
+
+		v_pair.AddMember("cleared", clearList[i], allocator);
+		v.PushBack(v_pair, allocator);
 	}
 
 	document.AddMember(k, v, allocator);
@@ -51,6 +55,7 @@ void JsonOBJ::set(std::string key, std::string value)
 	auto& allocator = document.GetAllocator();
 	rapidjson::Value& v = document[key.c_str()];
 	v.SetString(value.c_str(), value.length(), allocator);
+	document.AddMember("data", v, allocator);
 }
 
 std::string JsonOBJ::getDoc()

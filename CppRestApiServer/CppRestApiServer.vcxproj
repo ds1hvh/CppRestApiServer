@@ -27,6 +27,7 @@
     <ClCompile Include="test\GameTest.cpp" />
     <ClCompile Include="test\JsonTest.cpp" />
     <ClCompile Include="WebServer.cpp" />
+    <ClCompile Include="WebServerTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\Board.h" />
