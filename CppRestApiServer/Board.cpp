@@ -4,11 +4,11 @@
 #define NOCARD -1
 
 
-Board::Board(int len) {
-	this->len = len;
+Board::Board(int size) {
+	this->size = size;
 	card1_index = NOCARD;
 
-	for (int i = 0; i < len; i++) 
+	for (int i = 0; i < size; i++)
 	{
 		Card card(i), card2(i);
 		board.push_back(card);
@@ -22,7 +22,6 @@ Board::Board(int len) {
 // ¼ÅÇÃ
 void Board::shuffle() 
 {
-	int size = len * 2;
 	std::random_device rd;
 	std::mt19937 g(rd());
 
@@ -41,9 +40,9 @@ bool* Board::getBoard()
 	return answer;
 
 }
-int Board::getLen()
+int Board::getSize()
 {
-	return len;
+	return size;
 }
 
 // Guess card
@@ -71,4 +70,9 @@ void Board::printBoard() {
 	for (int i = 0; i < board.size(); i++) {
 		std::cout << i << ": " << board.at(i).getValue() << std::endl;
 	}
+}
+
+bool Board::isClear() 
+{
+
 }

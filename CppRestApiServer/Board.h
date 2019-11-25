@@ -8,14 +8,14 @@
 class Board {
 
 public :
-	Board(int len);
+	Board(int size);
 
 	// 셔플
 	void shuffle();
 
 	// Getter
 	bool* getBoard();
-	int getLen();
+	int getSize();
 
 	// Guess card
 	void guess(int val);
@@ -23,10 +23,14 @@ public :
 	// Print board
 	void printBoard();
 
+	bool isClear();
+
 protected :
 
 private :
-	std::vector<Card>	board;			// 2차원 배열 보드판
-	int					len;			// 길이
-	int					card1_index;	// 첫번째로 뒤집는 카드
+	std::vector<Card>	board;
+	int					size;		
+	int					clear_count;	
+	int					card1_index;
+
 };
