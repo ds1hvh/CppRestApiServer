@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="RapidJson">
+      <UniqueIdentifier>{74d08bcd-10de-4411-8d22-a9bd088f2e17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,64 +63,64 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\allocators.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\cursorstreamwrapper.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\document.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\encodedstream.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\encodings.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\filereadstream.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\filewritestream.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\fwd.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\istreamwrapper.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\memorybuffer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\memorystream.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\ostreamwrapper.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\pointer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\prettywriter.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\rapidjson.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\reader.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\schema.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\stream.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\stringbuffer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
     <ClInclude Include="rapidjson\writer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>RapidJson</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

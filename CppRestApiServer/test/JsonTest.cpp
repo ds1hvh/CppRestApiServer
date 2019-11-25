@@ -13,6 +13,8 @@ int JsonTest() {
 	json_tester->add("aaa", "bbb");
 	json_tester->set("abc", "bbb");
 
+	json_tester->add("board", board);
+
 	std::cout << json_tester->getDoc().c_str();
 
 	return 0;

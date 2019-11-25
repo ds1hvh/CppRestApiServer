@@ -1,5 +1,6 @@
 #include "JsonOBJ.h"
 #include<string>
+#include<iostream>
 
 JsonOBJ::JsonOBJ()
 {
@@ -33,9 +34,12 @@ void JsonOBJ::add(std::string key, Board board)
 
 	k.SetString(key.c_str(), key.length(), allocator);
 	v.SetArray();
-
-	for (bool card : board.getClearList()) {
-		v.PushBack(card, allocator);
+	
+	int size = board.getSize();
+	bool* clearList = board.getClearList();
+	for (int i = 0; i < size; i++) 
+	{
+		v.PushBack(clearList[i], allocator);
 	}
 
 	document.AddMember(k, v, allocator);
