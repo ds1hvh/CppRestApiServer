@@ -2,9 +2,7 @@
 #include<string>
 #include<iostream>
 #include<cstdlib>
-
-extern int webServerTest(int argc, char *argv[]);
-extern int gameTest();
+#include "Test.h"
 
 #pragma comment (lib, "ws2_32.lib")
 

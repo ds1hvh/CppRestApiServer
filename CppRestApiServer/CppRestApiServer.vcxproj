@@ -19,12 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="game\Board.cpp" />
+    <ClCompile Include="game\Card.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TcpListener.cpp" />
+    <ClCompile Include="test\GameTest.cpp" />
     <ClCompile Include="WebServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game\Board.h" />
+    <ClInclude Include="game\Card.h" />
     <ClInclude Include="TcpListener.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="WebServer.h" />
   </ItemGroup>
   <ItemGroup>

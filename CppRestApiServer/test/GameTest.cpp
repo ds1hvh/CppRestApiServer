@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+#include "../Test.h"
 #include "../game/Board.h"
 
 int gameTest() {
