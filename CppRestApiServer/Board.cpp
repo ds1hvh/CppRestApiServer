@@ -7,6 +7,7 @@
 Board::Board(int size) {
 	this->size = size;
 	card1_index = NOCARD;
+	clear_count = 0;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -55,6 +56,7 @@ void Board::guess(int index)
 		{
 			board[card1_index].clear();
 			board[index].clear();
+			clear_count++;
 		}
 
 		card1_index = NOCARD;
