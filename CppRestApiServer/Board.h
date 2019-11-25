@@ -18,7 +18,7 @@ public :
 	int getSize();
 
 	// Guess card
-	void guess(int val);
+	bool guess(int val);
 
 	// Print board
 	void printBoard();

@@ -47,7 +47,7 @@ int Board::getSize()
 }
 
 // Guess card
-void Board::guess(int index)
+bool Board::guess(int index)
 {
 
 	if (card1_index != NOCARD)
@@ -66,6 +66,7 @@ void Board::guess(int index)
 		card1_index = index;
 	}
 
+	return isClear();
 }
 
 void Board::printBoard() {
@@ -76,5 +77,9 @@ void Board::printBoard() {
 
 bool Board::isClear() 
 {
-
+	if (clear_count == size) 
+	{
+		return true;
+	}
+	return false;
 }
