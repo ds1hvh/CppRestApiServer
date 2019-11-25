@@ -1,15 +1,13 @@
 #include "WebServer.h"
-#define IPADDR "0.0.0.0"
-#define PORT 8080
+#include<string>
+#include<iostream>
+#include<cstdlib>
 
+extern int webServerTest(int argc, char *argv[]);
+extern int gameTest();
 #pragma comment (lib, "ws2_32.lib")
 
-int main() 
+int main(int argc, char *argv[])
 {
-	WebServer webServer(IPADDR, PORT);
-	if (webServer.init() != 0) {
-		return -1;
-	}
-	webServer.run();
-	return 0;
+	gameTest();
 }

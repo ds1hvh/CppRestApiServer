@@ -71,7 +71,7 @@ bool Board::guess(int index)
 
 void Board::printBoard() {
 	for (int i = 0; i < board.size(); i++) {
-		std::cout << i << ": " << board.at(i).getValue() << std::endl;
+		std::cout << i << ": " << board.at(i).getValue() << " " << board.at(i).getCleared() << std::endl;
 	}
 }
 
@@ -81,5 +81,6 @@ bool Board::isClear()
 	{
 		return true;
 	}
+
 	return false;
 }
