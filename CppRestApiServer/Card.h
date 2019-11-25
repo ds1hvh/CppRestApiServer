@@ -4,17 +4,17 @@ class Card {
 	
 public :
 
-	Card() {
-		cleared = false;
-		value = 0;
-	}
+	Card();
+	Card(int value);
 
 	bool operator == (Card& card2);
+	void clear();
 
 	// Getter, setter
-	void clear();
 	void setValue(int value);
+	
 	bool getCleared();
+	
 	int getValue();
 
 protected :
