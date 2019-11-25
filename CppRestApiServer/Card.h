@@ -9,6 +9,9 @@ public :
 		value = 0;
 	}
 
+	bool operator == (Card& card2);
+
+	// Getter, setter
 	void setCleared(bool cleared);
 	void setValue(int value);
 	bool getCleared();
