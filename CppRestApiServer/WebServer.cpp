@@ -6,6 +6,7 @@
 #include<iterator>
 #include "WebServer.h"
 
+
 // Handler for when a message is received from the client
 void WebServer::onClientConnected(int clientSocket)
 {
@@ -19,41 +20,44 @@ void WebServer::onClientDisconnected(int clientSocket)
 
 void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 {
-
-	// Get /index.html HTTP/1.1
-
 	// Parse out the document requested
 	std::istringstream iss(msg);
 	std::vector<std::string> parsed((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
 
-
 	std::string content = "";
-	std::string htmlFile = "/index.html";
+	std::string uri = "/index.html";
 	int code = 404;
 	int size = 0;
 
 	if (parsed.size() >= 3 && parsed[0] == "GET") // HTTP Methods len >= 3
 	{
-		htmlFile = parsed[1];
+		uri = parsed[1];
 
 		// default page
-		if (htmlFile == "/")  
+		if (uri == "/")
 		{
-			htmlFile = "/index.html";
+			uri = "/index.html";
+			
+			// Open the document in the local file system
+			std::ifstream f(".\\wwwroot" + uri);
+
+			if (f.good())
+			{
+				std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+				content = str;
+				code = 200;
+			}
+
+			f.close();
+		}
+		else if (uri == "/game")
+		{
+			rapidjson::Document doc;
+			
 		}
 	}
 	
-	// Open the document in the local file system
-	std::ifstream f(".\\wwwroot" + htmlFile);
-
-	if (f.good())
-	{
-		std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
-		content = str;
-		code = 200;
-	}
-
-	f.close();
+	
 
 	// Write the document back to the client
 	std::ostringstream oss;
