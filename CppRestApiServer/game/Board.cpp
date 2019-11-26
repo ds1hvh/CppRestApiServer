@@ -4,7 +4,12 @@
 #define NOCARD -1
 
 Board::Board(int size) {
-	this->size = size*2;
+	init(size);
+}
+
+void Board::init(int size) 
+{
+	this->size = size * 2;
 	card1_index = NOCARD;
 	clear_count = 0;
 
@@ -14,11 +19,10 @@ Board::Board(int size) {
 		board.push_back(card);
 		board.push_back(card2);
 	}
-	
+
 	shuffle();
 
 }
-
 // ¼ÅÇÃ
 void Board::shuffle() 
 {

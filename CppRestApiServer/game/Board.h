@@ -10,6 +10,8 @@ class Board {
 public :
 	Board(int size);
 
+	void init(int size);
+
 	// ¼ÅÇÃ
 	void shuffle();
 
