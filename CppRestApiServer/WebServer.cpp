@@ -35,7 +35,7 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 	int code = 404;
 	int size = 0;
 
-	if (parsed.size() >= 3) // HTTP Methods len >= 3
+	if (parsed.size() >= 3) // HTTP request len >= 3
 	{
 		uri = parsed[1];
 		if (parsed[0] == "GET") {
@@ -43,25 +43,20 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 			if (uri == "/")
 			{
 				uri = "/index.html";
-
-				// Open the document in the local file system
-				std::ifstream f(".\\wwwroot" + uri);
-
-				if (f.good())
-				{
-					std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
-					content = str;
-					code = 200;
-				}
-
-				f.close();
 			}
-			else if (uri == "/game")
+			// Open the document in the local file system
+			std::ifstream f(".\\wwwroot" + uri);
+
+			if (f.good())
 			{
+				std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+				content = str;
 				code = 200;
-				content_type = "application/json";
-
 			}
+			std::cout << "------------------------" << std::endl;
+			std::cout << content << std::endl;
+			std::cout << "------------------------" << std::endl;
+			f.close();
 		}
 		else if(parsed[0] == "POST")
 		{

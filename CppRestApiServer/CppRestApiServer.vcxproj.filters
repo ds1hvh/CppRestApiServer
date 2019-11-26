@@ -136,5 +136,8 @@
     <None Include="wwwroot\index.html">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="wwwroot\main.js">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

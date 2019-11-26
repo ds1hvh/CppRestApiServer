@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\main.js" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
