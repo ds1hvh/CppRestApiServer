@@ -5,27 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Web Server Test Page!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
 </head>
 <body>
     <div id="app">
         <h1>Web Server Test Page</h1>
         
         <h2>POST /new</h2>
+
         <button v-on:click="postButton()">POST!</button>
         <select v-bind="size">
-            <option value="2" selected="selected">2</option>
+            <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
         <div v-bind="result">
-        <div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script src="main.js" />
+    <script src="main.js"></script>
 </body>
 </html>

@@ -7,12 +7,15 @@ var app = new Vue({
         }
     },
     methods: {
-        postButton: function () {
+        postButton() {
             const baseURI = 'http://localhost:8080';
-            this.$http.post(`${baseURI}/posts`, { size:this.size })
+            console.log("!!");
+            axios.post(baseURI+'/game', { "size":this.size })
                 .then((result) => {
                     console.log(result)
                     this.result = result.data
+                }).catch((error) => {
+                    console.log(error)
                 })
         }
     }

@@ -25,7 +25,7 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 	std::vector<std::string> parsed((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
 
 	for (int i = 0; i < parsed.size(); i++) {
-		std::cout << parsed.at(i)<<" ";
+		std::cout << parsed.at(i) << std::endl;
 	}
 	std::cout << std::endl;
 
