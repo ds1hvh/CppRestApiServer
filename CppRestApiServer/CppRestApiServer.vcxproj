@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="game\Board.cpp" />
     <ClCompile Include="game\Card.cpp" />
+    <ClCompile Include="Json.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TcpListener.cpp" />
     <ClCompile Include="test\GameTest.cpp" />
@@ -29,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="game\Board.h" />
     <ClInclude Include="game\Card.h" />
+    <ClInclude Include="Json.h" />
     <ClInclude Include="TcpListener.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="WebServer.h" />
