@@ -3,9 +3,8 @@
 #include <iostream>
 #define NOCARD -1
 
-
 Board::Board(int size) {
-	this->size = size;
+	this->size = size*2;
 	card1_index = NOCARD;
 	clear_count = 0;
 
@@ -30,15 +29,14 @@ void Board::shuffle()
 }
 
 // Getter
-bool* Board::getBoard()
+bool* Board::getClearList()
 {
-	bool* answer = new bool[5];
-	for (int i = 0; i < 5; i++)
-	{
-		answer[i] = false;
+	bool* clearList = new bool[size];
+	for (int i = 0; i < size; i++) {
+		clearList[i] = board[i].getCleared();
 	}
 	
-	return answer;
+	return clearList;
 
 }
 int Board::getSize()
@@ -49,7 +47,6 @@ int Board::getSize()
 // Guess card
 bool Board::guess(int index)
 {
-
 	if (card1_index != NOCARD)
 	{
 		if (board[card1_index] == board[index]) 

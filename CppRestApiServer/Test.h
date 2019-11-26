@@ -1,4 +1,5 @@
 #pragma once
 
-int webServerTest(int argc, char *argv[]);
+int webServerTest(const char* ipAddr, int port);
 int gameTest();
+int JsonTest();
