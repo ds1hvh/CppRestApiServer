@@ -131,6 +131,9 @@
     <ClInclude Include="rapidjson\writer.h">
       <Filter>RapidJson</Filter>
     </ClInclude>
+    <ClInclude Include="Request.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\index.html">

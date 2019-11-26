@@ -15,7 +15,7 @@ int JsonTest() {
 
 	json_tester->add("data", board);
 
-	std::cout << json_tester->getDoc().c_str();
+	std::cout << json_tester->getStr().c_str();
 
 	return 0;
 }

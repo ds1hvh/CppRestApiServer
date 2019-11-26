@@ -3,19 +3,24 @@ var app = new Vue({
     data() {
         return {
             size : 2,
-            result: ""
+            postResult: "",
+            getResult: ""
         }
     },
     methods: {
         postButton() {
             const baseURI = 'http://localhost:8080';
-            console.log("!!");
-            axios.post(baseURI+'/game', { "size":this.size })
+            axios.post(baseURI+'/new', { size: this.size })
                 .then((result) => {
-                    console.log(result)
-                    this.result = result.data
-                }).catch((error) => {
-                    console.log(error)
+                    this.postResult="success!";
+                })
+        },
+        getButton(){
+            const baseURI = 'http://localhost:8080';
+            axios.get(baseURI+'/game', { size: this.size })
+                .then((result) => {
+                    console.log(result.data);
+                    this.getResult = result.data;
                 })
         }
     }

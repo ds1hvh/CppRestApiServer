@@ -1,3 +1,4 @@
+
 #include "JsonOBJ.h"
 #include<string>
 #include<iostream>
@@ -5,6 +6,10 @@
 JsonOBJ::JsonOBJ()
 {
 	document.SetObject();
+}
+
+JsonOBJ::JsonOBJ(const char* json) {
+	document.Parse(json);
 }
 
 void JsonOBJ::add(std::string key)
@@ -58,7 +63,7 @@ void JsonOBJ::set(std::string key, std::string value)
 	document.AddMember("data", v, allocator);
 }
 
-std::string JsonOBJ::getDoc()
+std::string JsonOBJ::getStr()
 {
 	rapidjson::StringBuffer buffer;
 

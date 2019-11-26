@@ -4,18 +4,22 @@
 #include<sstream>
 #include<vector>
 #include<iterator>
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 #include "WebServer.h"
-
+#include "game/Board.h"
+#include "JsonOBJ.h"
 
 // Handler for when a message is received from the client
 void WebServer::onClientConnected(int clientSocket)
 {
-	std::cout << "[CON]client" << clientSocket << " connected!" << std::endl;
+	std::cout << "[CON]Client" << clientSocket << " connected!" << std::endl;
 }
 
 void WebServer::onClientDisconnected(int clientSocket)
 {
-		std::cout << "[DIS]client" << clientSocket << " disconnected!" << std::endl;
+		std::cout << "[DIS]Client" << clientSocket << " disconnected!" << std::endl;
 }
 
 void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
@@ -24,52 +28,73 @@ void WebServer::onMessageReceived(int clientSocket, const char* msg, int length)
 	std::istringstream iss(msg);
 	std::vector<std::string> parsed((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
 
-	for (int i = 0; i < parsed.size(); i++) {
-		std::cout << parsed.at(i) << std::endl;
+	std::cout << "[REQ]Client" << clientSocket << " ";
+	for (int i = 0; i < 3; i++) {
+		std::cout << parsed.at(i) << " ";
 	}
 	std::cout << std::endl;
 
-	std::string content = "";
 	std::string uri = "/index.html";
 	std::string content_type = "text/html";
+	std::string content = "";
+	std::string parameter = "";
 	int code = 404;
 	int size = 0;
+	Board board(0);
+	rapidjson::Document document;
 
 	if (parsed.size() >= 3) // HTTP request len >= 3
 	{
 		uri = parsed[1];
-		if (parsed[0] == "GET") {
-			// default page
-			if (uri == "/")
+		if (parsed[0] == "GET") 
+		{
+			if (uri == "/game")
 			{
-				uri = "/index.html";
+				JsonOBJ json;
+				json.add("data", board);
+				content = json.getStr();
+				std::cout << content;
 			}
-			// Open the document in the local file system
-			std::ifstream f(".\\wwwroot" + uri);
+			else
+			{
+				// default page
+				if (uri == "/")
+				{
+					uri = "/index.html";
+				}
 
-			if (f.good())
-			{
-				std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
-				content = str;
-				code = 200;
+				// Open the document in the local file system
+				std::ifstream f(".\\wwwroot" + uri);
+
+				if (f.good())
+				{
+					std::string str((std::istreambuf_iterator<char>)f, std::istreambuf_iterator<char>());
+					content = str;
+				}
+
+				f.close();
 			}
-			std::cout << "------------------------" << std::endl;
-			std::cout << content << std::endl;
-			std::cout << "------------------------" << std::endl;
-			f.close();
+			
+			code = 200;
 		}
 		else if(parsed[0] == "POST")
 		{
 			if (uri == "/new")
 			{
-
+				parameter = parsed.back();
+				document.Parse(parameter.c_str());
+				std::cout << "-----------------------------" << std::endl;
+				std::cout << "size: " << document["size"].GetInt() << std::endl;
+				std::cout << "-----------------------------" << std::endl;
+				board.init(document["size"].GetInt());
+				
+				content = "";
+				code = 200;
 			}
 		}
 		
 	}
 	
-	
-
 	// Write the document back to the client
 	std::ostringstream oss;
 	oss << "HTTP/1.1 " << code << " OK\r\n";
